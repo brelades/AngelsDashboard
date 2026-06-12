@@ -10,12 +10,12 @@
     { "name": "slots", "emoji": "🎰", "description": "Try your luck on the slot machine" },
     { "name": "socials", "emoji": "🐦", "description": "View social media profiles" },
     { "name": "status", "emoji": "📡", "description": "Check live stream status" },
-    { "name": "vipdaily", "emoji": "💎", "description": "Claim VIP daily reward" }
+    { "name": "vipdaily", "emoji": "💎", "description": "Claim your VIP daily reward (Restricted to those who purchased VIP)" }
   ],
 
   "discord": [
     { "name": "check-points", "emoji": "❓", "description": "Check your or another user's points balance" },
-    { "name": "create-role", "emoji": "🎨", "description": "Create your custom role" },
+    { "name": "create-role", "emoji": "🎨", "description": "Claim your custom role (Restricted to those who purchased it)" },
     { "name": "leaderboard", "emoji": "🏆", "description": "View the points leaderboard" },
     { "name": "link", "emoji": "🔗", "description": "Link your Twitch account to Discord" }
   ]
