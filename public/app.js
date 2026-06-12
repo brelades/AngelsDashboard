@@ -18,17 +18,15 @@ async function loadStatus() {
 
     document.getElementById("botStatus").textContent = data.bot;
 
-    // only set once from server
-    uptimeSeconds = data.uptime;
-
+    uptimeSeconds = data.uptime || 0;
     updateUptimeUI();
 
   } catch {
-    document.getElementById("botStatus").textContent = "offline";
+    document.getElementById("botStatus").textContent = "Offline";
   }
 }
 
-// format uptime nicely
+// -------------------- FORMAT UPTIME --------------------
 function formatUptime(seconds) {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
@@ -37,10 +35,9 @@ function formatUptime(seconds) {
   return `${h}h ${m}m ${s}s`;
 }
 
-// update UI without fetching server
 function updateUptimeUI() {
-  document.getElementById("uptime").textContent =
-    formatUptime(uptimeSeconds);
+  const el = document.getElementById("uptime");
+  if (el) el.textContent = formatUptime(uptimeSeconds);
 }
 
 // -------------------- COMMANDS --------------------
@@ -56,30 +53,30 @@ async function loadCommands() {
     discordContainer.innerHTML = "";
 
     // -------------------- TWITCH --------------------
-    data.twitch.forEach(cmd => {
+    (data.twitch || []).forEach(cmd => {
       twitchContainer.innerHTML += `
         <div class="card" onclick="toggleCard(event,this)">
           <div class="card-header">
-            <span>${cmd.emoji}</span>
-            ${cmd.name.replace(/^!/, "")}
+            <span>${cmd.emoji || "✨"}</span>
+            ${cmd.name}
           </div>
           <div class="card-body">
-            ${cmd.description}
+            ${cmd.description || "No description"}
           </div>
         </div>
       `;
     });
 
     // -------------------- DISCORD --------------------
-    data.discord.forEach(cmd => {
+    (data.discord || []).forEach(cmd => {
       discordContainer.innerHTML += `
         <div class="card" onclick="toggleCard(event,this)">
           <div class="card-header">
-            <span>${cmd.emoji}</span>
+            <span>${cmd.emoji || "✨"}</span>
             ${cmd.name}
           </div>
           <div class="card-body">
-            ${cmd.description}
+            ${cmd.description || "No description"}
           </div>
         </div>
       `;
@@ -96,18 +93,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   for (let i = 0; i < 70; i++) {
     const star = document.createElement("div");
-
     star.className = "star";
     star.style.left = Math.random() * 100 + "vw";
     star.style.animationDuration = 3 + Math.random() * 5 + "s";
-
     stars.appendChild(star);
   }
 
   loadStatus();
   loadCommands();
 
-  // 🔥 live uptime counter (no refresh needed)
+  // live uptime counter
   setInterval(() => {
     uptimeSeconds++;
     updateUptimeUI();
