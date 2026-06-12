@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngelsAssistant Dashboard</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <h1>✨ AngelsAssistant ✨</h1>
+  <div class="subtitle">Live Twitch & Discord commands list</div>
+
+  <div class="status-bar">
+
+    <div class="status-card">
+      <div class="label">Bot Status</div>
+      <div id="botStatus">Loading...</div>
+    </div>
+
+    <div class="status-card">
+      <div class="label">Uptime</div>
+      <div id="uptime">Loading...</div>
+    </div>
+
+  </div>
+
+  <!-- TWITCH -->
+  <div class="category twitch">
+
+    <div class="category-header" onclick="toggleCategory(this.parentElement)">
+      <div class="header-title">
+        <img class="app-icon"
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitch.svg"
+          alt="twitch" />
+        Twitch Commands
+      </div>
+
+      <span>▼</span>
+    </div>
+
+    <div class="category-content" id="twitchCommands">
+      <div class="loading">Loading Twitch commands...</div>
+    </div>
+
+  </div>
+
+  <!-- DISCORD -->
+  <div class="category discord">
+
+    <div class="category-header" onclick="toggleCategory(this.parentElement)">
+      <div class="header-title">
+        <img class="app-icon"
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg"
+          alt="discord" />
+        Discord Commands
+      </div>
+
+      <span>▼</span>
+    </div>
+
+    <div class="category-content" id="discordCommands">
+      <div class="loading">Loading Discord commands...</div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
