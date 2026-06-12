@@ -120,7 +120,7 @@ function loadCommands(folder, platform) {
 // -------------------- COMMANDS API --------------------
 app.get("/api/commands", (req, res) => {
   try {
-    const basePath = path.join(__dirname, "..", "commands");
+    const basePath = path.join(__dirname, "commands");
 
     const twitchPath = path.join(basePath, "twitch");
     const discordPath = path.join(basePath, "discord");
